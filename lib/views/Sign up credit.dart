@@ -8,39 +8,38 @@ class Singupcredit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                SizedBox(height: 50),
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              Expanded(child: SizedBox()),
 
-                // Image
-                Center(
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    child: Image.asset("assets/images", fit: BoxFit.cover),
-                  ),
+              // Image
+              Center(
+                child: Container(
+                  width: 300,
+                  child: Image.asset("images/photo.png", fit: BoxFit.cover),
                 ),
-                Text(
-                  'Sign Up Via E-mail',
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 50),
-                // Button
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Signupcredit2()),
-                    );
-                  },
-                  child: Text('Get Started'),
-                ),
-              ],
-            ),
+              ),
+              Text(
+                'Sign Up Via E-mail',
+                style: TextStyle(fontSize: 24),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 50),
+              Expanded(child: SizedBox()),
+              // Button
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Signupcredit2()),
+                  );
+                },
+                child: Text('Get Started'),
+              ),
+            ],
           ),
         ),
       ),
