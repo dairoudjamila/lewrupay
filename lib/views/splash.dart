@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 
 class Namepage {
   static const onboarding1 = '/onboarding1';
+
+  static var Onboarding2;
+
+  static var onboarding2;
 }
 
 class Splash extends StatefulWidget {

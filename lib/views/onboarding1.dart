@@ -45,7 +45,7 @@ class Onboarding1 extends StatelessWidget{
                   
                   style: ElevatedButton.styleFrom(
 
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color.fromARGB(255, 33, 150, 243),
                   foregroundColor: Colors.white
                   ),
                   
