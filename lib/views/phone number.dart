@@ -30,7 +30,7 @@ class Phonenumber extends StatelessWidget {
                 minWidth: double.infinity,
                 onPressed: () {},
                 // ignore: sort_child_properties_last
-                child: Text('Proceed'),
+                child: Text('Send'),
                 color: Colors.blue,
                 textColor: Colors.white,
               ),
