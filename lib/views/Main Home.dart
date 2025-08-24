@@ -27,4 +27,19 @@ class _MainHomeState extends State<MainHome> {
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
+
+  Widget _buildHeader() {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 25,
+            //backgroundImage: AssetImage('Images'),
+            child: Icon(Icons.person, size: 20),
+          ),
+        ],
+      ),
+    );
+  }
 }
