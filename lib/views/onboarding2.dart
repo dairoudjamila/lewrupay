@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lewrupay/views/Home.dart';
 
 class Onboarding2 extends StatelessWidget {
   const Onboarding2({super.key});
@@ -38,7 +39,7 @@ class Onboarding2 extends StatelessWidget {
                     ),
 
                     onPressed: () {
-                      Get.to(() => Onboarding2());
+                      Get.to(() => LewruPayApp());
                     },
                     child: Text("start", style: TextStyle(fontSize: 20)),
                   ),
