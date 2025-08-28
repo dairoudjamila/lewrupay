@@ -162,7 +162,7 @@ class _MainHomeState extends State<MainHome> {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.blue,
-            child: Icon(icon, color: Colors.white, size: 60),
+            child: Icon(icon, color: Colors.white, size: 80),
           ),
           const SizedBox(height: 10),
           Text(
