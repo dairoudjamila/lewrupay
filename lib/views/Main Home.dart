@@ -16,15 +16,14 @@ class _MainHomeState extends State<MainHome> {
         child: Column(
           children: [
             _buildHeader(),
-            //_buildBaLanceCard(),
+            // _buildBaLanceCard(),
             _buildSearchBar(),
 
-            // _buildActionButtons(),
-            const Spacer(),
+            _buildActionButtons(),
           ],
         ),
       ),
-      //bottomNavigationBar: _buildBottomNavigationBar(),
+      // bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -35,7 +34,7 @@ class _MainHomeState extends State<MainHome> {
         children: [
           CircleAvatar(
             radius: 25,
-            //backgroundImage: AssetImage('Images'),
+            backgroundImage: AssetImage('Images'),
             child: Icon(Icons.person, size: 20),
           ),
           const SizedBox(width: 15),
@@ -112,13 +111,63 @@ class _MainHomeState extends State<MainHome> {
           const SizedBox(width: 10),
           Expanded(
             child: TextField(
-              //controller: _SearchController,
+              // controller: _SearchController,
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: '',
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButtons() {
+    return GridView(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      shrinkWrap: true,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 15,
+      ),
+      children: [
+        _gridViewItem('Send', Icons.send),
+        _gridViewItem('Receive', Icons.request_page),
+        _gridViewItem('Data', Icons.account_balance_wallet),
+        _gridViewItem('Crédit', Icons.money_off),
+      ],
+    );
+  }
+
+  _gridViewItem(String title, IconData icon) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.blue,
+            child: Icon(icon, color: Colors.white, size: 60),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ],
       ),

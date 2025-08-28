@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lewrupay/views/Main%20Home.dart';
 
 class Phonenumber extends StatelessWidget {
   const Phonenumber({super.key});
@@ -28,7 +29,12 @@ class Phonenumber extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: MaterialButton(
                 minWidth: double.infinity,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainHome()),
+                  );
+                },
                 // ignore: sort_child_properties_last
                 child: Text('Send'),
                 color: Colors.blue,

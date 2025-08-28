@@ -20,7 +20,7 @@ class Onboarding1 extends StatelessWidget {
                   width: 550,
                   height: 200,
 
-                  child: Image.asset("image/onboarding phone.png"),
+                  child: Image.asset("images/onboarding phone.png"),
                 ),
               ),
               SizedBox(height: 100),

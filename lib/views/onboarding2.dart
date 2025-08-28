@@ -18,7 +18,7 @@ class Onboarding2 extends StatelessWidget {
                   width: 550,
                   height: 300,
 
-                  child: Image.asset("image/onboarding2 photo.png"),
+                  child: Image.asset("images/onboarding2 photo.png"),
                 ),
               ),
               SizedBox(height: 90),

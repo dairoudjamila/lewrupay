@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lewrupay/views/Main%20Home.dart';
 
 class Signupcredit2 extends StatelessWidget {
   const Signupcredit2({super.key});
@@ -64,7 +65,14 @@ class Signupcredit2 extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: MaterialButton(
                           minWidth: double.infinity,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainHome(),
+                              ),
+                            );
+                          },
                           // ignore: sort_child_properties_last
                           child: Text('Proceed'),
                           color: Colors.blue,
