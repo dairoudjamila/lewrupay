@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lewrupay/views/Sign_Up.dart';
+import 'package:lewrupay/views/profil.dart';
 
-class Onboarding2 extends StatelessWidget {
-  const Onboarding2 ({super.key});
+
+class Congrat extends StatelessWidget {
+  const Congrat ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +25,18 @@ class Onboarding2 extends StatelessWidget {
             width: 550,
             height: 300,
           
-            child: Image.asset("image/onboarding2 photo.png")
+            child: Image.asset("image/moon phone.png")
           
            )
             ),
             SizedBox(height: 90,),
            Text(
-            "LewruPay is a mobile digital finance",style: TextStyle(fontSize: 20,color: Colors.blue),textAlign: TextAlign.center,
+            "Congratulations !!",style: TextStyle(fontSize: 20,color: Colors.blue),textAlign: TextAlign.center,
            ),
 
              SizedBox(height: 150),
              Row(
-               mainAxisAlignment: MainAxisAlignment.end,
+               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                
 
@@ -49,9 +50,9 @@ class Onboarding2 extends StatelessWidget {
                   
                   
                   onPressed: () {
-                  Get.to( () =>Sign_Up());
+                  Get.to( () =>Profil());
                 }, 
-                child: Text("start",style: TextStyle(fontSize: 20),)
+                child: Text("Get started",style: TextStyle(fontSize: 20),)
                 )
               ],
             )
