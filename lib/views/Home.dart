@@ -3,7 +3,7 @@ import 'package:gradient_elevated_button/gradient_elevated_button.dart';
 import 'package:lewrupay/views/Sign up credit.dart';
 
 class Home extends StatelessWidget {
-  const Home ({super.key});
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Singupcredit()),
                 );
               },
-              child: const Text("Start"),
+              child: const Text("Start", style: TextStyle(color: Colors.white)),
             ),
             Spacer(flex: 1),
           ],
@@ -39,6 +39,4 @@ class Home extends StatelessWidget {
       ),
     );
   }
-  
-  
 }

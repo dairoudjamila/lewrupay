@@ -11,22 +11,25 @@ class Phonenumber extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: 'Number',
-                hintText: 'Enter number',
-                prefixIcon: Icon(Icons.numbers),
-                border: OutlineInputBorder(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: 'Number',
+                  hintText: 'Enter number',
+                  prefixIcon: Icon(Icons.numbers),
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (String value) {},
+                validator: (value) {
+                  return value!.isEmpty ? 'Please enter number' : null;
+                },
               ),
-              onChanged: (String value) {},
-              validator: (value) {
-                return value!.isEmpty ? 'Please enter number' : null;
-              },
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 300),
               child: MaterialButton(
                 minWidth: double.infinity,
                 onPressed: () {
@@ -35,6 +38,7 @@ class Phonenumber extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => MainHome()),
                   );
                 },
+
                 // ignore: sort_child_properties_last
                 child: Text('Send'),
                 color: Colors.blue,

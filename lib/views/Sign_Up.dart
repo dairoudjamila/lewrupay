@@ -11,7 +11,7 @@ class SignUp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 200),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -31,7 +31,7 @@ class SignUp extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 30),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
@@ -41,7 +41,7 @@ class SignUp extends StatelessWidget {
               onPressed: () {
                 Get.to(() => Congrat());
               },
-              child: const Text('log in'),
+              child: const Text('Log in'),
             ),
           ],
         ),
