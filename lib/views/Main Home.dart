@@ -11,16 +11,38 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Colors.white),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.white),
+            label: "Profile",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history, color: Colors.white),
+            label: "History",
+          ),
+        ],
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+      ),
+
       backgroundColor: const Color(0xFFF5F7FA),
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildHeader(),
-            // _buildBaLanceCard(),
-            _buildSearchBar(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildHeader(),
+              _buildBalanceCard(),
+              _buildSearchBar(),
 
-            _buildActionButtons(),
-          ],
+              _buildActionButtons(),
+            ],
+          ),
         ),
       ),
       // bottomNavigationBar: _buildBottomNavigationBar(),
@@ -61,6 +83,7 @@ class _MainHomeState extends State<MainHome> {
       child: Column(
         children: [
           Container(
+            width: double.infinity,
             margin: const EdgeInsets.symmetric(
               horizontal: 20.0,
               vertical: 10.0,
@@ -70,27 +93,24 @@ class _MainHomeState extends State<MainHome> {
               color: const Color(0xFFD5D5D5),
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'solde LzwruPay',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF2C3E50),
-                  ),
+            child: ListTile(
+              title: Text(
+                'solde LewruPay',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF2C3E50),
                 ),
-                const SizedBox(height: 8),
-                const Text(
-                  'XAF*******',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF2C3E50),
-                  ),
+              ),
+              subtitle: Text(
+                'XAF*******',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF2C3E50),
                 ),
-              ],
+              ),
+              trailing: Icon(Icons.visibility, color: Colors.black),
             ),
           ),
         ],
@@ -134,25 +154,30 @@ class _MainHomeState extends State<MainHome> {
   }
 
   Widget _buildActionButtons() {
-    return GridView(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      child: GridView.count(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 15,
+        crossAxisSpacing: 5,
+        mainAxisSpacing: 5,
+        children: [
+          _gridViewItem('Send', Icons.send),
+          _gridViewItem('Receive', Icons.call_received),
+          _gridViewItem('Data', Icons.data_array),
+          _gridViewItem('Credit', Icons.money_off),
+          // _gridViewItem('Bills', Icons.receipt_long),
+          // _gridViewItem('More', Icons.more_horiz),
+        ],
       ),
-      children: [
-        _gridViewItem('Send', Icons.send),
-        _gridViewItem('Receive', Icons.request_page),
-        _gridViewItem('Data', Icons.account_balance_wallet),
-        _gridViewItem('Crédit', Icons.money_off),
-      ],
     );
   }
 
   _gridViewItem(String title, IconData icon) {
     return Container(
+      margin: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Colors.blue,
         borderRadius: BorderRadius.circular(15),
@@ -171,7 +196,7 @@ class _MainHomeState extends State<MainHome> {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.blue,
-            child: Icon(icon, color: Colors.white, size: 80),
+            child: Icon(icon, color: Colors.white, size: 70),
           ),
           const SizedBox(height: 10),
           Text(
