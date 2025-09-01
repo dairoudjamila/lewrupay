@@ -163,9 +163,9 @@ class _MainHomeState extends State<MainHome> {
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         children: [
-          _gridViewItem('Send', Icons.send),
-          _gridViewItem('Receive', Icons.call_received),
-          _gridViewItem('Data', Icons.data_array),
+          _gridViewItem('Send', Icons.upload),
+          _gridViewItem('Receive', Icons.download),
+          _gridViewItem('Data', Icons.swap_vert),
           _gridViewItem('Credit', Icons.money_off),
           // _gridViewItem('Bills', Icons.receipt_long),
           // _gridViewItem('More', Icons.more_horiz),
