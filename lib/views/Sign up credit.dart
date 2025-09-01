@@ -34,7 +34,7 @@ class Singupcredit extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Onboarding2()),
+                    MaterialPageRoute(builder: (context) => Signupcredit2()),
                   );
                 },
                 child: Text('Get Started'),

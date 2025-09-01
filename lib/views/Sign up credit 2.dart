@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lewrupay/views/Main%20Home.dart';
+import 'package:lewrupay/views/sign_up.dart';
 
-class Onboarding2 extends StatelessWidget {
-  const Onboarding2({super.key});
+class Signupcredit2 extends StatelessWidget {
+  const Signupcredit2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +70,7 @@ class Onboarding2 extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => MainHome(),
-                              ),
+                              MaterialPageRoute(builder: (context) => SignUp()),
                             );
                           },
                           // ignore: sort_child_properties_last
