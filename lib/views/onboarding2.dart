@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+<<<<<<< HEAD
+import 'package:lewrupay/views/Sign_Up.dart';
+=======
 import 'package:lewrupay/views/Home.dart';
+>>>>>>> 54784f95b9b39e8a72cbe9ad28dfa19da32accf6
 
 class Onboarding2 extends StatelessWidget {
   const Onboarding2({super.key});
@@ -43,12 +47,37 @@ class Onboarding2 extends StatelessWidget {
                     },
                     child: Text("start", style: TextStyle(fontSize: 20)),
                   ),
+<<<<<<< HEAD
+                  
+                  
+                  
+                  
+                  onPressed: () {
+                  Get.to( () =>Sign_Up());
+                }, 
+                child: Text("start",style: TextStyle(fontSize: 20),)
+                )
+              ],
+            )
+
+             ]
+           )
+          )
+      )
+
+
+
+
+=======
                 ],
               ),
             ],
           ),
         ),
       ),
+>>>>>>> 54784f95b9b39e8a72cbe9ad28dfa19da32accf6
     );
   }
 }
+
+
