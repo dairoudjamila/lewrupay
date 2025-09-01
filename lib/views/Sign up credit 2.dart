@@ -43,6 +43,8 @@ class Signupcredit2 extends StatelessWidget {
                       Column(
                         children: [
                           TextFormField(
+                            obscureText: true,
+
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
                               labelText: 'Password',

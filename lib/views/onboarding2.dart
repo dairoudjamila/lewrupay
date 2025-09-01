@@ -41,7 +41,7 @@ class Onboarding2 extends StatelessWidget {
                     onPressed: () {
                       Get.to(() => Home());
                     },
-                    child: Text("start", style: TextStyle(fontSize: 20)),
+                    child: Text("Start", style: TextStyle(fontSize: 20)),
                   ),
                 ],
               ),
@@ -52,5 +52,3 @@ class Onboarding2 extends StatelessWidget {
     );
   }
 }
-
-
