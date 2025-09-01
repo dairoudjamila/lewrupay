@@ -8,6 +8,7 @@ class Sign_Up extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
    appBar: AppBar(),
    body:Padding(padding: const EdgeInsets.all(40.0),
    child:Column(
@@ -57,6 +58,12 @@ class Sign_Up extends StatelessWidget {
    
 
    )
+=======
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Text("Sign up for a secure transaction using LewruPay"),
+      ),
+>>>>>>> 54784f95b9b39e8a72cbe9ad28dfa19da32accf6
     );
   }
 }
