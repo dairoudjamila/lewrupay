@@ -25,7 +25,7 @@ class Congrat extends StatelessWidget {
             width: 550,
             height: 300,
           
-            child: Image.asset("image/moon phone.png")
+            child: Image.asset("images/moon phone.png")
           
            )
             ),

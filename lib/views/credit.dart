@@ -1,20 +1,19 @@
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lewrupay/views/Receive.dart';
 
-class Send extends StatefulWidget {
-  const Send({super.key});
+import 'package:get/get.dart';
+
+class Credit extends StatefulWidget {
+  const Credit ({super.key});
 
   @override
-  State<Send> createState() => _SendState();
+  State<Credit> createState() => CreditState();
 }
 
-class _SendState extends State<Send> {
+class CreditState extends State<Credit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Send")),
+      appBar: AppBar(title: const Text("Credit")),
 
       body: SingleChildScrollView(
         child: Padding(
@@ -22,10 +21,10 @@ class _SendState extends State<Send> {
           child: Form(
             child: Column(
               children: [
-                Text('Payers phone number'),
+                Text("Phone number"),
                 TextFormField(
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.add_circle_outline_sharp),
+                    prefixIcon: Icon(Icons.add_ic_call_sharp),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -33,23 +32,24 @@ class _SendState extends State<Send> {
                   ),
                 ),
                 SizedBox(height: 12),
-                Text('Beneficiary phone number'),
+                Text("amount"),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    hintText: 'Enter a number',
+                    hintText: 'Enter amount',
                   ),
                 ),
                   SizedBox(height: 12),
-                Text('Amount'),
+                Text('Payment Method'),
                 TextFormField(
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.arrow_drop_down_circle),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    hintText: 'Enter an amount',
+                    hintText: 'Orange Money',
                   ),
                 ),
 
@@ -66,7 +66,7 @@ class _SendState extends State<Send> {
             Get.to( () => () );
           },
          child: const
-         Text('Apply'),
+         Text('Activate now'),
          
          )
 

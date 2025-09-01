@@ -18,17 +18,7 @@ class _ProfilState extends State<Profil> {
   return Scaffold(
 
    
-    bottomNavigationBar: BottomNavigationBar(
-      items:
-     const [
-      BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.white),label: "Home",),
-      BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.white),label: "Profile"),
-      BottomNavigationBarItem(icon: Icon(Icons.history,color: Colors.white),label: "History"),
-        ], 
-        backgroundColor: Colors.blue,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black),
-
+    
    
      body: SingleChildScrollView( 
       child: Column(
@@ -45,7 +35,7 @@ class _ProfilState extends State<Profil> {
            Stack(
            alignment: Alignment.bottomCenter,
            children: [
-            const CircleAvatar(radius:60,backgroundImage: AssetImage("image/moon phone.png"),),
+            const CircleAvatar(radius:60,backgroundImage: AssetImage("images/moon phone.png"),),
             IconButton(onPressed:(){
 
             },
@@ -118,10 +108,10 @@ class _ProfilState extends State<Profil> {
           ),
           
           onPressed: (){
-            Get.to( () => Send() );
+            Get.to( () => () );
           },
          child: const
-         Text('log in'),
+         Text('log out'),
          
          )
 

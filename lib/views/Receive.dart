@@ -63,7 +63,7 @@ class _ReceiveState extends State<Receive> {
           ),
           
           onPressed: (){
-            Get.to( () =>Data () );
+            Get.to( () => () );
           },
          child: const
          Text('Recharge now'),

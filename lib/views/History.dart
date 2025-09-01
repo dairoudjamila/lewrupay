@@ -12,16 +12,7 @@ class History extends StatelessWidget {
       ),
 
 
-      bottomNavigationBar: BottomNavigationBar(items: 
-      const[
-        BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.white),label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.white),label: "profile"),
-        BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.white),label: "History"),
-      ],
-      backgroundColor:Colors.blue,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.black
-      ),
+     
 
 
     );
