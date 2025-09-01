@@ -8,62 +8,10 @@ class Sign_Up extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-   appBar: AppBar(),
-   body:Padding(padding: const EdgeInsets.all(40.0),
-   child:Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-
-      TextField(
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          labelText: "sign up via e-mail",
-          prefixIcon: Icon(Icons.email,color: Colors.blue,),
-          border: OutlineInputBorder(
-            borderSide:BorderSide(color: Colors.blue,width: 2.5),
-            borderRadius: BorderRadius.circular(15),
-          ),
-           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.blue,width: 2),
-            borderRadius: BorderRadius.circular(15)
-           )
-
-        ),
-      ),
-
-              
-         const SizedBox(height: 25),
-         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.blue
-          ),
-          
-          onPressed: (){
-            Get.to( () => Congrat() );
-          },
-         child: const
-         Text('log in'),
-         
-         )
-    ],
-   )
-
-
-
-    
-     
-    
-   
-
-   )
-=======
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Text("Sign up for a secure transaction using LewruPay"),
       ),
->>>>>>> 54784f95b9b39e8a72cbe9ad28dfa19da32accf6
     );
   }
 }

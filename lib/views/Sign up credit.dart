@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-// TODO Implement this library.
-=======
 import 'package:flutter/material.dart';
 import 'package:lewrupay/views/Sign%20up%20credit%202.dart';
 
@@ -37,7 +34,7 @@ class Singupcredit extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Signupcredit2()),
+                    MaterialPageRoute(builder: (context) => Onboarding2()),
                   );
                 },
                 child: Text('Get Started'),
@@ -49,4 +46,3 @@ class Singupcredit extends StatelessWidget {
     );
   }
 }
->>>>>>> 54784f95b9b39e8a72cbe9ad28dfa19da32accf6
