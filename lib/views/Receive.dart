@@ -41,7 +41,7 @@ class _ReceiveState extends State<Receive> {
                     hintText: 'Enter a number',
                   ),
                 ),
-                  SizedBox(height: 12),
+                SizedBox(height: 12),
                 Text('Payment Method'),
                 TextFormField(
                   decoration: InputDecoration(
@@ -52,28 +52,18 @@ class _ReceiveState extends State<Receive> {
                     hintText: 'Orange Money',
                   ),
                 ),
-
-
-
                 const SizedBox(height: 25),
-         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.blue
-          ),
-          
-          onPressed: (){
-            Get.to( () => () );
-          },
-         child: const
-         Text('Recharge now'),
-         
-         )
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
+                  ),
 
-
-
-
-
+                  onPressed: () {
+                    Get.to(() => ());
+                  },
+                  child: const Text('Recharge now'),
+                ),
               ],
             ),
           ),

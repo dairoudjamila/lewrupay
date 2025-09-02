@@ -25,7 +25,7 @@ class Onboarding1 extends StatelessWidget {
               ),
               SizedBox(height: 100),
               Text(
-                "welcome to LewruPay",
+                "Welcome to LewruPay",
                 style: TextStyle(fontSize: 20, color: Colors.blue),
                 textAlign: TextAlign.center,
               ),
