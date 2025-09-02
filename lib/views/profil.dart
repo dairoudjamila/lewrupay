@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lewrupay/views/Personal_Details.dart';
 import 'package:lewrupay/views/Account_Details.dart';
-import 'package:lewrupay/views/Send.dart';
 
 class Profil extends StatefulWidget{
   const Profil ({super.key});
