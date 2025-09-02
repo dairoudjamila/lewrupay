@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:lewrupay/firebase_options.dart';
 import 'package:lewrupay/views/onboarding1.dart';
 import 'package:lewrupay/views/onboarding2.dart';
 import 'package:lewrupay/views/splash.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     GetMaterialApp(
       home: Splash(),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Data extends StatefulWidget {
-  const Data ({super.key});
+  const Data({super.key});
 
   @override
   State<Data> createState() => _DataState();
@@ -41,7 +41,7 @@ class _DataState extends State<Data> {
                     hintText: 'Enter amount',
                   ),
                 ),
-                  SizedBox(height: 12),
+                SizedBox(height: 12),
                 Text('Payment Method'),
                 TextFormField(
                   decoration: InputDecoration(
@@ -53,27 +53,18 @@ class _DataState extends State<Data> {
                   ),
                 ),
 
-
-
                 const SizedBox(height: 25),
-         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.blue
-          ),
-          
-          onPressed: (){
-            Get.to( () => () );
-          },
-         child: const
-         Text('Activate now'),
-         
-         )
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
+                  ),
 
-
-
-
-
+                  onPressed: () {
+                    Get.to(() => ());
+                  },
+                  child: const Text('Activate now'),
+                ),
               ],
             ),
           ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542059121283",
+    "project_id": "lewrupay",
+    "storage_bucket": "lewrupay.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542059121283:android:8f0cb664326e1efb5729b6",
+        "android_client_info": {
+          "package_name": "com.example.lewrupay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542059121283-90h9qebfkn68r9tc6k25rlkpj2pevc15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRLOeZMQv746l50-PjnzU2K1Ffw7fr6PU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542059121283-90h9qebfkn68r9tc6k25rlkpj2pevc15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
