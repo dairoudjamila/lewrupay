@@ -143,28 +143,18 @@ class _NewHomeState extends State<NewHome> {
         mainAxisSpacing: 5,
         children: [
           InkWell(
-            child: _gridViewItem('Send', Icons.send, () {
-             
-              
-                Get.to(() => Send());
-          
+            child: _gridViewItem('Send', Icons.upload, () {
+              Get.to(() => Send());
             }),
           ),
-          _gridViewItem('Receive', Icons.call_received, () {
-        
-              Get.to(() => Receive());
-           
+          _gridViewItem('Receive', Icons.download, () {
+            Get.to(() => Receive());
           }),
-          _gridViewItem('Data', Icons.data_array, () {
-            
-              Get.to(() => Data());
-            
+          _gridViewItem('Data', Icons.swap_vert, () {
+            Get.to(() => Data());
           }),
           _gridViewItem('Credit', Icons.money_off, () {
-
             Get.to(() => Credit());
-
-
           }),
           // _gridViewItem('Bills', Icons.receipt_long),
           // _gridViewItem('More', Icons.more_horiz),
