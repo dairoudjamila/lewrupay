@@ -28,6 +28,21 @@ class Congrat extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
 
+              Center(
+                child: SizedBox(
+                  width: 550,
+                  height: 300,
+
+                  child: Image.asset("images/moon phone.png"),
+                ),
+              ),
+              SizedBox(height: 90),
+              Text(
+                "Congratulations !!",
+                style: TextStyle(fontSize: 20, color: Colors.blue),
+                textAlign: TextAlign.center,
+              ),
+
               SizedBox(height: 150),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

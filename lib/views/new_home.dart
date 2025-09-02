@@ -1,47 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:lewrupay/views/History.dart';
-import 'package:lewrupay/views/new_home.dart';
-import 'package:lewrupay/views/profil.dart';
+import 'package:get/get.dart';
+import 'package:lewrupay/views/Data.dart';
+import 'package:lewrupay/views/Receive.dart';
+import 'package:lewrupay/views/Send.dart';
+import 'package:lewrupay/views/credit.dart';
 
-class MainHome extends StatefulWidget {
-  const MainHome({super.key});
+class NewHome extends StatefulWidget {
+  const NewHome({super.key});
 
   @override
-  State<MainHome> createState() => _MainHomeState();
+  State<NewHome> createState() => _NewHomeState();
 }
 
-class _MainHomeState extends State<MainHome> {
-  int indexPage = 0;
-  List listPages = [NewHome(), Profil(), History()];
+class _NewHomeState extends State<NewHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: indexPage,
-        onTap: (value) {
-          indexPage = value;
-          setState(() {});
-        },
-
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.white),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.white),
-            label: "Profile",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history, color: Colors.white),
-            label: "History",
-          ),
-        ],
-        backgroundColor: Colors.blue,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
-      ),
-
       backgroundColor: const Color(0xFFF5F7FA),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -50,13 +24,11 @@ class _MainHomeState extends State<MainHome> {
               _buildHeader(),
               _buildBalanceCard(),
               _buildSearchBar(),
-
               _buildActionButtons(),
             ],
           ),
         ),
       ),
-      // bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -65,11 +37,7 @@ class _MainHomeState extends State<MainHome> {
       padding: const EdgeInsets.all(20.0),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage('Images'),
-            child: Icon(Icons.person, size: 20),
-          ),
+          CircleAvatar(radius: 25, child: Icon(Icons.person, size: 20)),
           const SizedBox(width: 15),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +74,7 @@ class _MainHomeState extends State<MainHome> {
             ),
             child: ListTile(
               title: Text(
-                'Solde LewruPay',
+                'solde LewruPay',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -174,10 +142,30 @@ class _MainHomeState extends State<MainHome> {
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         children: [
-          _gridViewItem('Send', Icons.upload),
-          _gridViewItem('Receive', Icons.download),
-          _gridViewItem('Data', Icons.swap_vert),
-          _gridViewItem('Credit', Icons.money_off),
+          InkWell(
+            child: _gridViewItem('Send', Icons.send, () {
+             
+              
+                Get.to(() => Send());
+          
+            }),
+          ),
+          _gridViewItem('Receive', Icons.call_received, () {
+        
+              Get.to(() => Receive());
+           
+          }),
+          _gridViewItem('Data', Icons.data_array, () {
+            
+              Get.to(() => Data());
+            
+          }),
+          _gridViewItem('Credit', Icons.money_off, () {
+
+            Get.to(() => Credit());
+
+
+          }),
           // _gridViewItem('Bills', Icons.receipt_long),
           // _gridViewItem('More', Icons.more_horiz),
         ],
@@ -185,36 +173,39 @@ class _MainHomeState extends State<MainHome> {
     );
   }
 
-  _gridViewItem(String title, IconData icon) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.blue,
-            child: Icon(icon, color: Colors.white, size: 70),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-          ),
-        ],
+  _gridViewItem(String title, IconData icon, void Function()? onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.blue,
+              child: Icon(icon, color: Colors.white, size: 70),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
       ),
     );
   }
