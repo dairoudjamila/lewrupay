@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lewrupay/views/Receive.dart';
@@ -42,7 +41,7 @@ class _SendState extends State<Send> {
                     hintText: 'Enter a number',
                   ),
                 ),
-                  SizedBox(height: 12),
+                SizedBox(height: 12),
                 Text('Amount'),
                 TextFormField(
                   decoration: InputDecoration(
@@ -53,27 +52,18 @@ class _SendState extends State<Send> {
                   ),
                 ),
 
-
-
                 const SizedBox(height: 25),
-         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.blue
-          ),
-          
-          onPressed: (){
-            Get.to( () => () );
-          },
-         child: const
-         Text('Apply'),
-         
-         )
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
+                  ),
 
-
-
-
-
+                  onPressed: () {
+                    Get.to(() => ());
+                  },
+                  child: const Text('Apply'),
+                ),
               ],
             ),
           ),

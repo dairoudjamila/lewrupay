@@ -7,7 +7,8 @@ import 'package:lewrupay/views/splash.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  WidgetsFlutterBinding.ensureInitialized();
+    
   runApp(
     GetMaterialApp(
       home: Splash(),
