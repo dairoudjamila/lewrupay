@@ -43,6 +43,61 @@ class Signupcredit2 extends StatelessWidget {
                       Column(
                         children: [
                           TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                              labelText: 'Nom',
+                              hintText: 'Enter Nom',
+                              prefixIcon: Icon(Icons.password),
+                              border: OutlineInputBorder(),
+                            ),
+                            onChanged: (String value) {},
+                            validator: (value) {
+                              return value!.isEmpty ? 'Please enter Nom' : null;
+                            },
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                              labelText: 'Prenom',
+                              hintText: 'Enter prenom',
+                              prefixIcon: Icon(Icons.password),
+                              border: OutlineInputBorder(),
+                            ),
+                            onChanged: (String value) {},
+                            validator: (value) {
+                              return value!.isEmpty
+                                  ? 'Please enter prenom'
+                                  : null;
+                            },
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                              labelText: 'Date de naissance',
+                              hintText: 'Enter date de naissance',
+                              prefixIcon: Icon(Icons.password),
+                              border: OutlineInputBorder(),
+                            ),
+                            onChanged: (String value) {},
+                            validator: (value) {
+                              return value!.isEmpty
+                                  ? 'Please enter date de naissance'
+                                  : null;
+                            },
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          TextFormField(
                             obscureText: true,
 
                             keyboardType: TextInputType.visiblePassword,
