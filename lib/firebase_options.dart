@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAQca9Yrc5ibicB5ielTfwdY326SDbyfu4',
-    appId: '1:272161396622:android:15df540d296f97c50936df',
-    messagingSenderId: '272161396622',
-    projectId: 'lewrupay-35a63',
-    storageBucket: 'lewrupay-35a63.firebasestorage.app',
+    apiKey: 'AIzaSyCq_BEjyMSsk5kPwaOVRvZ4x23Q9Fr0Z58',
+    appId: '1:561788853400:android:eefa82d2119b36f37e04ed',
+    messagingSenderId: '561788853400',
+    projectId: 'lewrupay-9ed21',
+    storageBucket: 'lewrupay-9ed21.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAziLOdyhbM5-6Q8qd5f3yc_LIHQn19hBk',
-    appId: '1:272161396622:ios:cceb5bb59d6a38140936df',
-    messagingSenderId: '272161396622',
-    projectId: 'lewrupay-35a63',
-    storageBucket: 'lewrupay-35a63.firebasestorage.app',
-    iosClientId: '272161396622-u3brrqia9j07989j3o1lse5kduda7s7a.apps.googleusercontent.com',
+    apiKey: 'AIzaSyB3B8VhMBZd18yRCqoiPTN7vw3tqGbhAlk',
+    appId: '1:561788853400:ios:6f46b9df5e0676f77e04ed',
+    messagingSenderId: '561788853400',
+    projectId: 'lewrupay-9ed21',
+    storageBucket: 'lewrupay-9ed21.firebasestorage.app',
     iosBundleId: 'com.example.lewrupay',
   );
+
 }
