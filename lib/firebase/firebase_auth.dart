@@ -22,7 +22,7 @@ class FirebaseAuthentification {
         });
   }
 
-  signin({required UserModel user, required String password}) {
+  signup({required UserModel user, required String password}) {
     auth
         .createUserWithEmailAndPassword(email: user.email, password: password)
         .then((value) {

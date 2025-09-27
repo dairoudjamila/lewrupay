@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lewrupay/config/palette.dart';
 import 'package:lewrupay/views/Data.dart';
 import 'package:get/get.dart';
+import 'package:lewrupay/widgets/custom_button.dart';
 
 class Receive extends StatefulWidget {
   const Receive({super.key});
@@ -10,6 +12,8 @@ class Receive extends StatefulWidget {
 }
 
 class _ReceiveState extends State<Receive> {
+  String _selectedValue = "Orange Money";
+  final List<String> _options = ['Orange Money', 'MTN Mobile Money'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,13 +24,15 @@ class _ReceiveState extends State<Receive> {
           padding: const EdgeInsets.all(20),
           child: Form(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Receiver's phone number"),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.add_to_home_screen_sharp),
+                    prefixIcon: Icon(Icons.add_circle_outline),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     hintText: 'Enter a number',
                   ),
@@ -34,35 +40,59 @@ class _ReceiveState extends State<Receive> {
                 SizedBox(height: 12),
                 Text("Amount"),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.attach_money),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    hintText: 'Enter a number',
+                    hintText: 'Enter an amount',
                   ),
                 ),
                 SizedBox(height: 12),
                 Text('Payment Method'),
-                TextFormField(
+                DropdownButtonFormField<String>(
+                  value: _selectedValue,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.arrow_drop_down_circle),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Palette.primary,
+                        width: 2.0,
+                      ),
                     ),
-                    hintText: 'Orange Money',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide(
+                        color: Palette.primary,
+                        width: 2.0,
+                      ),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 25),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue,
-                  ),
-
-                  onPressed: () {
-                    Get.to(() => ());
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedValue = newValue!;
+                    });
                   },
-                  child: const Text('Recharge now'),
+                  items:
+                      _options.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                ),
+
+                const SizedBox(height: 25),
+                CustomButton(
+                  text: 'Recharge now',
+                  onPressed: () {},
+                  isPrimary: true,
                 ),
               ],
             ),

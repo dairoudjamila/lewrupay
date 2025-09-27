@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lewrupay/views/Main%20Home.dart';
+import 'package:lewrupay/views/home.dart';
 
 class Phonenumber extends StatelessWidget {
   const Phonenumber({super.key});
@@ -33,10 +33,10 @@ class Phonenumber extends StatelessWidget {
               child: MaterialButton(
                 minWidth: double.infinity,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainHome()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => MainHome()),
+                  // );
                 },
 
                 // ignore: sort_child_properties_last
