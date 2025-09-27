@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
+import 'package:lewrupay/config/palette.dart';
+import 'package:lewrupay/routes/route.dart';
 import 'package:lewrupay/views/Personal_Details.dart';
 import 'package:lewrupay/views/Account_Details.dart';
+import 'package:lewrupay/widgets/custom_button.dart';
 
 class Profil extends StatefulWidget {
   const Profil({super.key});
@@ -14,32 +18,44 @@ class _ProfilState extends State<Profil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Profile",
+          style: TextStyle(fontSize: 20),
+          selectionColor: Colors.black,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                const Text(
-                  "Profile",
-                  style: TextStyle(fontSize: 20),
-                  selectionColor: Colors.black,
-                ),
-              ],
-            ),
-            Center(
+            SizedBox(
+              height: 150,
               child: Stack(
-                alignment: Alignment.bottomCenter,
+                fit: StackFit.expand,
                 children: [
-                  const CircleAvatar(
-                    radius: 60,
-                    backgroundImage: AssetImage("images/moon phone.png"),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Palette.subtitle),
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage("images/moon phone.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.camera_alt, color: Colors.white),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  Positioned(
+                    bottom: 0,
+                    right: 130,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.camera_alt, color: Colors.white),
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Palette.primary,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -47,57 +63,50 @@ class _ProfilState extends State<Profil> {
             ),
 
             SizedBox(height: 30),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.withValues(alpha: 0.5)),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: ListTile(
-                leading: const Icon(Icons.person),
-                title: const Text("Personal details"),
-                trailing: const Icon(Icons.arrow_forward),
-                onTap: () {
-                  Get.to(() => Personal_Details());
-                },
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: const Icon(IconlyLight.profile),
+                    title: const Text("Personal details"),
+                    trailing: const Icon(IconlyLight.arrow_right_2),
+                    onTap: () {
+                      Get.to(() => Personal_Details());
+                    },
+                  ),
+                  Divider(),
+                  ListTile(
+                    leading: const Icon(IconlyLight.work),
+                    title: const Text("Account details"),
+                    trailing: const Icon(IconlyLight.arrow_right_2),
+                    onTap: () {
+                      Get.to(() => Account_Details());
+                    },
+                  ),
+                  Divider(),
+                  ListTile(
+                    leading: const Icon(IconlyLight.user_1),
+                    title: const Text("Invite friends to Lewrupay"),
+                    trailing: const Icon(IconlyLight.arrow_right_2),
+                    onTap: () {},
+                  ),
+                  Divider(),
+                  CustomButton(
+                    text: "Log out",
+                    onPressed: () {
+                      Get.offAllNamed(NameRoute.signIn);
+                    },
+                    isPrimary: true,
+                    color: Colors.red,
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: 30),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ListTile(
-                leading: const Icon(Icons.account_balance),
-                title: const Text("Account details"),
-                trailing: const Icon(Icons.arrow_forward),
-                onTap: () {
-                  Get.to(() => Account_Details());
-                },
-              ),
-            ),
-            SizedBox(height: 30),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ListTile(
-                leading: const Icon(Icons.group),
-                title: const Text("Invite friends to Lewrupay"),
-                trailing: const Icon(Icons.arrow_forward),
-                onTap: () {},
-              ),
-            ),
-
-            const SizedBox(height: 25),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.blue,
-              ),
-
-              onPressed: () {
-                Get.to(() => ());
-              },
-              child: const Text('log out'),
             ),
           ],
         ),

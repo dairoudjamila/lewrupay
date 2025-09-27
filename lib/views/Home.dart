@@ -1,42 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:gradient_elevated_button/gradient_elevated_button.dart';
-import 'package:lewrupay/views/Sign up credit.dart';
+import 'package:lewrupay/views/History.dart';
+import 'package:lewrupay/views/new_home.dart';
+import 'package:lewrupay/views/profil.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int indexPage = 0;
+  List listPages = [NewHome(), History(), Profil()];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            Spacer(flex: 3),
-            Text(
-              "LewruPay",
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: indexPage,
+        onTap: (value) {
+          indexPage = value;
+          setState(() {});
+        },
 
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            Spacer(),
-            const SizedBox(height: 120),
-            GradientElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Singupcredit()),
-                );
-              },
-              child: const Text("Start", style: TextStyle(color: Colors.white)),
-            ),
-            Spacer(flex: 1),
-          ],
-        ),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Colors.white),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history, color: Colors.white),
+            label: "History",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.white),
+            label: "Profile",
+          ),
+        ],
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
       ),
+
+      backgroundColor: const Color(0xFFF5F7FA),
+      body: listPages[indexPage],
+      // bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 }

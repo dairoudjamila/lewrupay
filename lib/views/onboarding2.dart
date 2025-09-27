@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lewrupay/views/Home.dart';
+import 'package:get/get.dart'; 
 
 class Onboarding2 extends StatelessWidget {
   const Onboarding2({super.key});
@@ -39,7 +38,7 @@ class Onboarding2 extends StatelessWidget {
                     ),
 
                     onPressed: () {
-                      Get.to(() => Home());
+                      // Get.to(() => Home());
                     },
                     child: Text("Start", style: TextStyle(fontSize: 20)),
                   ),

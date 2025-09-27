@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lewrupay/views/Receive.dart';
+import 'package:lewrupay/widgets/custom_button.dart';
 
 class Send extends StatefulWidget {
   const Send({super.key});
@@ -20,13 +20,14 @@ class _SendState extends State<Send> {
           padding: const EdgeInsets.all(20),
           child: Form(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Payers phone number'),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.add_circle_outline_sharp),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     hintText: 'Enter a number',
                   ),
@@ -35,8 +36,10 @@ class _SendState extends State<Send> {
                 Text('Beneficiary phone number'),
                 TextFormField(
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.phone),
+
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     hintText: 'Enter a number',
                   ),
@@ -45,25 +48,15 @@ class _SendState extends State<Send> {
                 Text('Amount'),
                 TextFormField(
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.attach_money),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     hintText: 'Enter an amount',
                   ),
                 ),
-
                 const SizedBox(height: 25),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue,
-                  ),
-
-                  onPressed: () {
-                    Get.to(() => ());
-                  },
-                  child: const Text('Apply'),
-                ),
+                CustomButton(text: 'Send', onPressed: () {}, isPrimary: true),
               ],
             ),
           ),
