@@ -10,17 +10,18 @@ class Singupcredit extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(50.0),
             child: Column(
               children: [
-                SizedBox(height: 50),
-
                 // Image
                 Center(
                   child: Container(
                     width: 100,
                     height: 100,
-                    child: Image.asset("assets/images", fit: BoxFit.cover),
+                    child: Image.asset(
+                      "assets/images/pic.png",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Text(
@@ -29,6 +30,7 @@ class Singupcredit extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 50),
+
                 // Button
                 ElevatedButton(
                   onPressed: () {
@@ -39,6 +41,7 @@ class Singupcredit extends StatelessWidget {
                   },
                   child: Text('Get Started'),
                 ),
+                SizedBox(height: 10),
               ],
             ),
           ),
