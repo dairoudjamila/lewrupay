@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_elevated_button/gradient_elevated_button.dart';
-import 'package:lewrupay/views/Sign%20up%20credit.dart';
+import 'package:lewrupay/views/Sign up credit.dart';
 
-class LewruPayApp extends StatelessWidget {
-  const LewruPayApp({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class LewruPayApp extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Singupcredit()),
                 );
               },
-              child: const Text("Start"),
+              child: const Text("Start", style: TextStyle(color: Colors.white)),
             ),
             Spacer(flex: 1),
           ],

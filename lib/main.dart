@@ -1,19 +1,27 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_elevated_button/gradient_elevated_button.dart';
-import 'package:lewrupay/views/Home.dart';
+import 'package:lewrupay/firebase_options.dart';
+import 'package:lewrupay/views/onboarding1.dart';
+import 'package:lewrupay/views/onboarding2.dart';
+import 'package:lewrupay/views/splash.dart';
+import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+    
   runApp(
-    GradientButtonThemeData(
-      data: GradientElevatedButton.styleFrom(
-        gradient: const LinearGradient(
-          colors: [Colors.blue, Colors.green],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-        foregroundColor: Colors.black,
-      ),
-      child: MaterialApp(home: LewruPayApp()),
+    GetMaterialApp(
+      home: Splash(),
+      title: "lewrupay",
+
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => const Splash()),
+
+        GetPage(name: Namepage.onboarding1, page: () => const Onboarding1()),
+
+        GetPage(name: '/Onboarding2', page: () => const Onboarding2()),
+      ],
     ),
   );
 }
