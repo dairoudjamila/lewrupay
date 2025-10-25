@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lewrupay/models/tansaction_model.dart';
 import 'package:lewrupay/models/user_model.dart';
@@ -28,14 +29,15 @@ class CloudFirestorage {
         });
   }
 
-  saveTransaction({required TransactionModel transaction}) {
+  saveTransaction({required TransactionModel transaction, required void Function() onError, required void Function() onSucess }) {
     storage
         .collection("transactions")
         .add(transaction.toMap())
         .then((value) {
-          print("Transaction added");
+       onSucess.call();
         })
         .catchError((error) {
+          onError.call();
           print("Failed to add transaction: $error");
         });
   }

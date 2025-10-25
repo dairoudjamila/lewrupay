@@ -8,8 +8,7 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    
-  runApp(
+    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);  runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Splash(),

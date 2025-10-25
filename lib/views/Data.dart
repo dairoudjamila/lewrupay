@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lewrupay/config/palette.dart';
+import 'package:lewrupay/firebase/cloud_firestorage.dart';
+import 'package:lewrupay/firebase/firebase_auth.dart';
+import 'package:lewrupay/models/tansaction_model.dart';
 import 'package:lewrupay/widgets/custom_button.dart';
+import 'package:uuid/uuid.dart';
 
 class Data extends StatefulWidget {
   const Data({super.key});
@@ -14,6 +18,14 @@ class Data extends StatefulWidget {
 class _DataState extends State<Data> {
   String _selectedValue = "Orange Money";
   final List<String> _options = ['Orange Money', 'MTN Mobile Money'];
+
+  var payersnumber = TextEditingController();
+  var receivernumber = TextEditingController();
+
+  var formKey = GlobalKey<FormState>();
+
+  var amount = TextEditingController();
+  var storage = CloudFirestorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +34,35 @@ class _DataState extends State<Data> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Form(
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Phone number"),
+                Text("payers number"),
                 TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: payersnumber,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.add_circle_outline),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    hintText: 'Enter a number',
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter the phone number";
+                    } else if (value.length < 9 || value.length > 9) {
+                      return "Enter the valide phone number";
+                    }
+                    return "";
+                  },
+                ),
+                SizedBox(height: 12),
+                Text("receiver number"),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: receivernumber,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.add_circle_outline),
                     border: OutlineInputBorder(
@@ -38,6 +74,8 @@ class _DataState extends State<Data> {
                 SizedBox(height: 12),
                 Text("Data amount"),
                 TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: amount,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -87,7 +125,9 @@ class _DataState extends State<Data> {
                 const SizedBox(height: 25),
                 CustomButton(
                   text: 'Activate now',
-                  onPressed: () {},
+                  onPressed: () {
+                    data();
+                  },
                   isPrimary: true,
                 ),
               ],
@@ -95,6 +135,42 @@ class _DataState extends State<Data> {
           ),
         ),
       ),
+    );
+  }
+
+  data() {
+    var transaction = TransactionModel(
+      id: Uuid().v1(),
+      numSender: payersnumber.text,
+      numReceiver: receivernumber.text,
+      amount: double.parse(amount.text),
+      type: TransactionType.data,
+      date: DateTime.now().toIso8601String(),
+    );
+    storage.saveTransaction(
+      transaction: transaction,
+      onError: () {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("error")));
+      },
+      onSucess: () {
+        payersnumber.clear();
+        receivernumber.clear();
+        amount.clear();
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("activation succeed")));
+      },
+    );
+  }
+
+  dialogue() {
+    showDialog(
+      context: context,
+      builder: (builder) {
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
