@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lewrupay/config/palette.dart';
+import 'package:lewrupay/firebase/firebase_auth.dart';
 import 'package:lewrupay/widgets/custom_button.dart';
 
 import '../routes/route.dart';
 
-class ForgetPassword extends StatelessWidget {
+class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
 
+  @override
+  State<ForgetPassword> createState() => _ForgetPasswordState();
+}
+
+class _ForgetPasswordState extends State<ForgetPassword> {
+    var auth =FirebaseAuthentification();
+    var email=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +45,7 @@ class ForgetPassword extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: email,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: "Email",
@@ -65,7 +74,7 @@ class ForgetPassword extends StatelessWidget {
                 CustomButton(
                   text: "Continuer",
                   onPressed: () {
-                    Get.toNamed(NameRoute.signIn);
+                    forgetpassword();
                   },
                   isPrimary: true,
                 ),
@@ -75,5 +84,16 @@ class ForgetPassword extends StatelessWidget {
         ),
       ),
     );
+  }
+  forgetpassword(){
+    auth.forgetpassword(email: email.text, onError: (){
+      ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("error")));
+    }, onSucess: (){
+      ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("email envoyer avec succes")));
+    });
   }
 }

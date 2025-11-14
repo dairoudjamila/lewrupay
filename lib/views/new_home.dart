@@ -145,13 +145,14 @@ class _NewHomeState extends State<NewHome> {
         crossAxisCount: 2,
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
+
         children: [
-          InkWell(
-            child: _gridViewItem('Send', Icons.upload, Palette.primary, () {
-              Get.toNamed(NameRoute.send);
-            }),
-          ),
-          _gridViewItem('Receive', Icons.download, Palette.primary, () {
+          // InkWell(
+          //   child: _gridViewItem('Send', Icons.upload, Palette.primary, () {
+          //     Get.toNamed(NameRoute.send);
+          //   }),
+          // ),
+          _gridViewItem('Send / Receive', Icons.download, Palette.primary, () {
             Get.toNamed(NameRoute.receive);
           }),
           _gridViewItem('Data', Icons.swap_vert, Palette.primary, () {

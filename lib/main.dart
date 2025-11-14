@@ -8,7 +8,13 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    (await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        ))
+        as Widget,
+  );
 
   runApp(
     GetMaterialApp(

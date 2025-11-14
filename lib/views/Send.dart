@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lewrupay/firebase/cloud_firestorage.dart';
+import 'package:lewrupay/firebase/firebase_auth.dart';
+import 'package:lewrupay/models/tansaction_model.dart';
 import 'package:lewrupay/widgets/custom_button.dart';
+import 'package:uuid/uuid.dart';
 
 class Send extends StatefulWidget {
   const Send({super.key});
@@ -10,6 +14,10 @@ class Send extends StatefulWidget {
 }
 
 class _SendState extends State<Send> {
+ 
+    var payersnumber=TextEditingController(); 
+    var receivernumber=TextEditingController();
+     var amount=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +31,8 @@ class _SendState extends State<Send> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Payers phone number'),
-                TextFormField(
+                TextFormField( 
+                  controller: payersnumber,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.add_circle_outline_sharp),
                     border: OutlineInputBorder(
@@ -35,6 +44,7 @@ class _SendState extends State<Send> {
                 SizedBox(height: 12),
                 Text('Beneficiary phone number'),
                 TextFormField(
+                  controller: receivernumber,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.phone),
 
@@ -47,6 +57,7 @@ class _SendState extends State<Send> {
                 SizedBox(height: 12),
                 Text('Amount'),
                 TextFormField(
+                  controller: amount,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.attach_money),
                     border: OutlineInputBorder(
@@ -56,12 +67,44 @@ class _SendState extends State<Send> {
                   ),
                 ),
                 const SizedBox(height: 25),
-                CustomButton(text: 'Send', onPressed: () {}, isPrimary: true),
+                CustomButton(text: 'Send', onPressed: () {
+                  send();
+                }, isPrimary: true),
               ],
             ),
           ),
         ),
       ),
-    );
+      );
   }
+
+ var storage = CloudFirestorage();
+   send() {
+    var transaction = TransactionModel(
+      id: Uuid().v1(),
+      numSender: payersnumber.text,
+      numReceiver: receivernumber.text,
+      amount: double.parse(amount.text),
+      type: TransactionType.data,
+      date: DateTime.now().toIso8601String(),
+    );
+    storage.saveTransaction(transaction: transaction,onError: () {
+    ScaffoldMessenger.of(context,).showSnackBar(SnackBar(content:Text("error")));
+    
+      
+    },onSucess: (){
+      payersnumber.clear();
+      receivernumber.clear();
+      amount.clear();
+      ScaffoldMessenger.of(context,).showSnackBar(SnackBar(content:Text("succeed")));
+    
+    });
+
+  }
+  dialogue() {
+    showDialog(context: context, builder:(builder) {
+      return Center(child: CircularProgressIndicator());
+    });
+  }
+
 }
