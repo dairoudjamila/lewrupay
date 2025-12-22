@@ -18,11 +18,11 @@ class Credit extends StatefulWidget {
 class CreditState extends State<Credit> {
   String _selectedValue = "Orange Money";
   final List<String> _options = ['Orange Money', 'MTN Mobile Money'];
-  
-    var payersnumber=TextEditingController();
-    var beneficiarynumber=TextEditingController();
-     var number=TextEditingController();
-      var amount=TextEditingController();
+
+  var payersnumber = TextEditingController();
+  var beneficiarynumber = TextEditingController();
+  var number = TextEditingController();
+  var amount = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +35,9 @@ class CreditState extends State<Credit> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Text("Payers number"),
                 TextFormField(
-                  controller:payersnumber ,
+                  controller: payersnumber,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.add_ic_call_sharp),
                     border: OutlineInputBorder(
@@ -47,8 +46,8 @@ class CreditState extends State<Credit> {
                     hintText: 'Enter a number',
                   ),
                 ),
-                SizedBox(height: 12,),
-                 Text("Beneficiary number"),
+                SizedBox(height: 12),
+                Text("Beneficiary number"),
                 TextFormField(
                   controller: beneficiarynumber,
                   decoration: InputDecoration(
@@ -61,7 +60,7 @@ class CreditState extends State<Credit> {
                 ),
                 SizedBox(height: 12),
                 Text("amount"),
-                TextFormField( 
+                TextFormField(
                   controller: amount,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -124,8 +123,9 @@ class CreditState extends State<Credit> {
       ),
     );
   }
+
   var storage = CloudFirestorage();
-   credit() {
+  credit() {
     var transaction = TransactionModel(
       id: Uuid().v1(),
       numSender: payersnumber.text,
@@ -134,22 +134,30 @@ class CreditState extends State<Credit> {
       type: TransactionType.data,
       date: DateTime.now().toIso8601String(),
     );
-    storage.saveTransaction(transaction: transaction,onError: () {
-    ScaffoldMessenger.of(context,).showSnackBar(SnackBar(content:Text("error")));
-    
-      
-    },onSucess: (){
-      payersnumber.clear();
-      beneficiarynumber.clear();
-      amount.clear();
-      ScaffoldMessenger.of(context,).showSnackBar(SnackBar(content:Text("succeed")));
-    
-    });
-
+    storage.saveTransaction(
+      transaction: transaction,
+      onError: () {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("error")));
+      },
+      onSucess: () {
+        payersnumber.clear();
+        beneficiarynumber.clear();
+        amount.clear();
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("succeed")));
+      },
+    );
   }
+
   dialogue() {
-    showDialog(context: context, builder:(builder) {
-      return Center(child: CircularProgressIndicator());
-    });
+    showDialog(
+      context: context,
+      builder: (builder) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
   }
 }
