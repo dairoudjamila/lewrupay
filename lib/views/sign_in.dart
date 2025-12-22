@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
+import 'package:http/http.dart';
 import 'package:lewrupay/config/palette.dart';
+import 'package:lewrupay/firebase/firebase_auth.dart';
 import 'package:lewrupay/routes/route.dart';
 import 'package:lewrupay/widgets/custom_button.dart';
 
@@ -13,6 +15,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  var email= TextEditingController();
+  var mdp=TextEditingController();
+  var formkey= GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +43,11 @@ class _SignInState extends State<SignIn> {
               ),
               const SizedBox(height: 30),
               Form(
+                key: formkey,
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         labelText: "Email",
@@ -63,6 +70,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
+                      controller: mdp,
                       keyboardType: TextInputType.text,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -106,7 +114,7 @@ class _SignInState extends State<SignIn> {
               CustomButton(
                 text: "Se connecter",
                 onPressed: () {
-                  Get.offAndToNamed(NameRoute.home);
+                 login();
                 },
                 isPrimary: true,
               ),
@@ -130,5 +138,23 @@ class _SignInState extends State<SignIn> {
         ),
       ),
     );
+  }
+  var auth = FirebaseAuthentification();
+  login(){
+    dialogue();
+auth.login(email: email.text, password: mdp.text, callBack: (){
+  Get.back();
+  Get.toNamed(NameRoute.home);
+}, onError: (){
+  Get.back();
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("email or password incorect")));
+});
+  }
+  dialogue() {
+    showDialog(context: context, builder:(builder) {
+      return Center(child: CircularProgressIndicator());
+    });
   }
 }
