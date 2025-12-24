@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:lewrupay/config/palette.dart';
+import 'package:lewrupay/firebase/firebase_auth.dart';
 import 'package:lewrupay/routes/route.dart';
 import 'package:lewrupay/views/Personal_Details.dart';
 import 'package:lewrupay/views/Account_Details.dart';
@@ -15,8 +16,11 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
+    var auth =FirebaseAuthentification();
   @override
   Widget build(BuildContext context) {
+  
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -100,7 +104,10 @@ class _ProfilState extends State<Profil> {
                   CustomButton(
                     text: "Log out",
                     onPressed: () {
-                      Get.offAllNamed(NameRoute.signIn);
+                      logout ();
+
+                      
+                
                     },
                     isPrimary: true,
                     color: Colors.red,
@@ -113,4 +120,17 @@ class _ProfilState extends State<Profil> {
       ),
     );
   }
+  logout(){
+    dialogue();
+    Future.delayed(const Duration(seconds: 1),(){
+      auth.logout();
+      Get.offAllNamed(NameRoute.signIn);});
+
+}
+dialogue() {
+    showDialog(context: context, builder:(builder) {
+      return Center(child: CircularProgressIndicator());
+    });
+  }
+
 }

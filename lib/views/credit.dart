@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lewrupay/config/palette.dart';
+import 'package:lewrupay/firebase/cloud_firestorage.dart';
+import 'package:lewrupay/firebase/firebase_auth.dart';
+import 'package:lewrupay/models/tansaction_model.dart';
 import 'package:lewrupay/widgets/custom_button.dart';
+import 'package:uuid/uuid.dart';
 
 class Credit extends StatefulWidget {
   const Credit({super.key});
@@ -14,6 +18,11 @@ class Credit extends StatefulWidget {
 class CreditState extends State<Credit> {
   String _selectedValue = "Orange Money";
   final List<String> _options = ['Orange Money', 'MTN Mobile Money'];
+
+  var payersnumber = TextEditingController();
+  var beneficiarynumber = TextEditingController();
+  var number = TextEditingController();
+  var amount = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +35,21 @@ class CreditState extends State<Credit> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Phone number"),
+                Text("Payers number"),
                 TextFormField(
+                  controller: payersnumber,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.add_ic_call_sharp),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    hintText: 'Enter a number',
+                  ),
+                ),
+                SizedBox(height: 12),
+                Text("Beneficiary number"),
+                TextFormField(
+                  controller: beneficiarynumber,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.add_ic_call_sharp),
                     border: OutlineInputBorder(
@@ -39,6 +61,7 @@ class CreditState extends State<Credit> {
                 SizedBox(height: 12),
                 Text("amount"),
                 TextFormField(
+                  controller: amount,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -88,7 +111,9 @@ class CreditState extends State<Credit> {
                 const SizedBox(height: 25),
                 CustomButton(
                   text: 'Activate now',
-                  onPressed: () {},
+                  onPressed: () {
+                    credit();
+                  },
                   isPrimary: true,
                 ),
               ],
@@ -96,6 +121,43 @@ class CreditState extends State<Credit> {
           ),
         ),
       ),
+    );
+  }
+
+  var storage = CloudFirestorage();
+  credit() {
+    var transaction = TransactionModel(
+      id: Uuid().v1(),
+      numSender: payersnumber.text,
+      numReceiver: beneficiarynumber.text,
+      amount: double.parse(amount.text),
+      type: TransactionType.data,
+      date: DateTime.now().toIso8601String(),
+    );
+    storage.saveTransaction(
+      transaction: transaction,
+      onError: () {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("error")));
+      },
+      onSucess: () {
+        payersnumber.clear();
+        beneficiarynumber.clear();
+        amount.clear();
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("succeed")));
+      },
+    );
+  }
+
+  dialogue() {
+    showDialog(
+      context: context,
+      builder: (builder) {
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }

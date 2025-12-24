@@ -240,13 +240,32 @@ class _SignUpState extends State<SignUp> {
 
   signUp() {
     if (formKey.currentState!.validate()) {
+      dialogue();
+
       var user = UserModel(
         idUser: "",
         email: email.text,
         nomPrenom: nomPrenom.text,
         dateNaiss: dateNaiss.text,
       );
-      firebaseAuth.signup(user: user, password: password.text);
+      firebaseAuth.signup(
+        user: user,
+        password: password.text,
+        onSucess: () {
+          Get.back();
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("inscription reussie")));
+          Get.offAndToNamed(NameRoute.home);
+        },
+        onError: () {
+          Get.back();
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("error")));
+          Get.offAndToNamed(NameRoute.home);
+        },
+      );
     }
   }
 
@@ -255,5 +274,11 @@ class _SignUpState extends State<SignUp> {
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
     return emailRegex.hasMatch(email);
+  }
+
+  dialogue() {
+    showDialog(context: context, builder:(builder) {
+      return Center(child: CircularProgressIndicator());
+    });
   }
 }
